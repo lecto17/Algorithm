@@ -1,3 +1,30 @@
+*HashMap // 출처 : https://whatisthenext.tistory.com/81
+해싱(Hashing)이란 해시함수(hash function)를 이용해서 데이터를 해시테이블(hash table)에 저장하고 검색하는 기법을 말한다.
+
+키(key)와 값(value)를 하나의 세트로 묶어서 저장하는 컬렉션 클래스를 구현하는 데 사용
+키(key) : 중복될 수 없음
+값(value) : 중복될 수 있음.
+
+함수
+void clear() : Map의 모든 객체를 삭제
+boolean containsKey(Object key) : 지정된 key 객체와 일치하는 Map의 key객체가 있는지 확인
+boolean containsValue(Object value) : 지정된 value 객체와 일치하는 Map의 value객체가 있는지 확인
+Set entrySet() : Map에 저장되어 있는 key-value쌍을 Map.Entry 타입의 객체로 저장한 "Set"으로 반환
+boolean equals(Object o) : 동일한 Map인지 비교
+Object get(Object key) : 지정한 key객체에 대응하는 value객체를 찾아서 반환
+int hashCode() : 해시코드를 반환
+boolean isEmpty() : Map이 비어있는지 확인
+Set keySet() : Map에 저장된 모든 key객체를 반환한다.
+Object put(Object key, Object Value) : Map에 value객체를 key객체에 연결(mapping)하여 저장
+void putAll(Map t) : 지정된 Map의 모든 key-value쌍을 추가
+Object remove(Object key) : 지정한 key객체와 일치하는 key-value 객체를 삭제
+int size() : Map에 저장된 key-value쌍의 개수를 반환
+Collection values() : Map에 저장된 모든 value 객체를 반환
+
+HashMap : 저장은 느리지만 많은 양의 데이터를 검색하는데 뛰어난 성능을 보인다.
+또한, Key와 Value값에 null값을 허용하기 때문에 데이터가 빠져있어도 문제되지 않는다.
+
+
 git config user.name 
 git config user.email
 위 두 명령어를 통해 git bash에서 등록되어 있는 현재의 계정 이름 / 이메일을 확인 할 수 있습니다.

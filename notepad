@@ -1,3 +1,43 @@
+**IFNULL 함수 // 출처 : https://ra2kstar.tistory.com/75
+IFNULL은 해당 필드의 값이 NULL을 반환할때 다른 값으로 출력할 수 있도록 하는 함수이다. 
+SELECT IFNULL(필드명, "대체할 값") FROM 테이블명; 
+물론 하나의 필드의 값 뿐만아니라 , 연속적으로도 활용 할 수 있다. 
+eg) SELECT keyword, IFNULL( common_rep, IFNULL( fur_rep, makeup_rep ) ) as syn_2 FROM syn_color
+
+
+**MySQL 날짜 데이터에서 일부만 추출하기 // 출처: https://extbrain.tistory.com/60
+
+▶설명
+아래에 MySQL 함수들은 날짜 데이터에서 일부만을 추출할 수있습니다.
+
+YEAR : 연도 추출
+MONTH : 월 추출
+DAY : 일 추출 (DAYOFMONTH와 같은 함수)
+HOUR : 시 추출
+MINUTE : 분 추출
+SECOND : 초 추출
+
+▶사용법
+
+YEAR
+YEAR(기준 날짜);
+
+MONTH
+MONTH(기준 날짜);
+
+DAY
+DAY(기준 날짜);
+-- 또는 DAYOFMONTH(기준 날짜);
+
+HOUR
+HOUR(기준 날짜);
+
+MINUTE
+MINUTE(기준 날짜);
+
+
+
+
 *HashMap // 출처 : https://whatisthenext.tistory.com/81
 해싱(Hashing)이란 해시함수(hash function)를 이용해서 데이터를 해시테이블(hash table)에 저장하고 검색하는 기법을 말한다.
 

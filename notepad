@@ -1,3 +1,41 @@
+**MYSQL DATE_SUB() VS DATEDIFF()
+//DATE_SUB()
+This compares the stored value directly to date litterals. Such an expression can take advantage of an index on the date column.
+
+//DATEDIFF()
+In, constrast the second expression applies date function datediff() to the date column. This makes the expression non-SARGable, meaning that it will not benefit an index
+
+
+**MYSql SUBDATE() VS DATE_SUB() // 출처: https://database.guide/subdate-vs-date_sub-in-mysql-whats-the-difference/
+
+요약: DATE_SUB()과 SUBDATE()는 동일한 기능이지만 사용할 떄의 문법에서 차이가 있다. 전자는 하나의 형태를 지원하지만, SUBDATE()는 DATE_SUB()의 형태와 추가적인 형태를 모두(총2개의 형태를) 지원한다.
+
+The difference between the MySQL SUBDATE() and DATE_SUB() functions is exactly the same as the difference between the ADDDATE() and DATE_ADD() functions. One function allows for two different syntax forms, whereas the other allows for just one.
+
+This article demonstrates the difference.
+
+
+Syntax
+Here’s the syntax for each function.
+
+DATE_SUB()
+The DATE_SUB() syntax goes like this.
+
+DATE_SUB(date,INTERVAL expr unit)
+This accepts a date value, followed by the INTERVAL keyword and the expression and unit for which to subtract from the date supplied by the first argument.
+
+SUBDATE()
+The SUBDATE() syntax allows for two forms. You can use either of the following forms.
+
+SUBDATE(date,INTERVAL expr unit)
+Or
+
+SUBDATE(expr,days)
+The first form is exactly the same as the DATE_SUB() syntax, and when you use this syntax, the SUBDATE() function is a synonym for DATE_SUB().
+
+However, the second syntax form is only available when using the SUBDATE() function, and it allows you to use a shorthand way to specify the number of days to subtract from the date.
+
+
 **MYSQL 문자열 자르기 // 출처 : http://chongmoa.com/sql/9155
 1. 왼쪽에서 문자열 자르기
 left(컬럼명 또는 문자열, 왼쪽에서 잘라낼 문자열의 길이)

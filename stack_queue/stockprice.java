@@ -1,6 +1,7 @@
 //주식 가격
 //
 // 실행만 맞고 나머지 케이스는 다 틀림
+// 10가지 이상 넣은 test case는 실행되는데, 실제 제출시에는 실패함..
 // import java.util.*;
 //
 //class Solution {

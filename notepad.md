@@ -1,4 +1,6 @@
-**collection 공부하기
+**comparator, comparable, compareTo() 학습
+
+**collection&Map 참조 : https://darksilber.tistory.com/70
 
 **힙(heap) // 출처 : https://ko.wikipedia.org/wiki/%ED%9E%99_(%EC%9E%90%EB%A3%8C_%EA%B5%AC%EC%A1%B0)
 

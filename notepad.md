@@ -1,4 +1,4 @@
-**comparator, comparable, compareTo() 학습
+**comparator, comparable, compareTo() 학습   참조: https://m.blog.naver.com/PostView.nhn?blogId=cheesedrive&logNo=220148513502&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 **collection&Map 참조 : https://darksilber.tistory.com/70
 

@@ -14,6 +14,10 @@ static int gcd(int a, int b) {
 
 이와 같이 두수가 있으면 처음에 그 중 한 수(여기서는 b)로 나누고 나머지를 임시 변수(r)에 저장하고 나누어진수(a)는 나눈수(b)가 되고 나눈수(b)는 임시변수(r)이 된다. 그리고 b가 0이 아닐때 까지 반복하다 0이 되면 a를 return 하게 되는데 a가 a,b의 최대공약수가 된다.
 
+최소공배수 구하는법
+간단하다 , 이것 또한 알고리즘 문제에서 가장 많이 쓰이는 식인데
+최소공배수 = 두수의 곱 / 두수의 최대공약수
+
 **comparator, comparable, compareTo() 학습   참조: https://m.blog.naver.com/PostView.nhn?blogId=cheesedrive&logNo=220148513502&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 **collection&Map 참조 : https://darksilber.tistory.com/70

@@ -1,3 +1,19 @@
+**유클리드 호제법  참조 : https://velog.io/@mkdevelop5002/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4N%EA%B0%9C%EC%9D%98-%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98-with-JAVA
+유클리드 호제법
+알고리즘 문제에서 최대공약수 관련 문제는 보통 유클리드 호제법이라는 것을 사용한다.
+
+유클리드 호제법이란?
+static int gcd(int a, int b) {
+	while(b!=0) {
+		int r=a%b;
+		a=b;
+		b=r;
+	}
+	return a;
+}
+
+이와 같이 두수가 있으면 처음에 그 중 한 수(여기서는 b)로 나누고 나머지를 임시 변수(r)에 저장하고 나누어진수(a)는 나눈수(b)가 되고 나눈수(b)는 임시변수(r)이 된다. 그리고 b가 0이 아닐때 까지 반복하다 0이 되면 a를 return 하게 되는데 a가 a,b의 최대공약수가 된다.
+
 **comparator, comparable, compareTo() 학습   참조: https://m.blog.naver.com/PostView.nhn?blogId=cheesedrive&logNo=220148513502&proxyReferer=https:%2F%2Fwww.google.com%2F
 
 **collection&Map 참조 : https://darksilber.tistory.com/70

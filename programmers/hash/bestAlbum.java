@@ -73,54 +73,69 @@
 //
 //내 풀이 미완성
 //
-//import java.util.*;
-
- //class Obj{
- //    String genre;    
- //    int idx ;
- //    int value ;    
- //    
- //    public Obj(String genre, int idx, int value){
- //        this.genre = genre;
- //        this.idx = idx;;
- //        this.value = value;        
- //        
- //    }
- //    
- //}
- //
- //class Solution {
- //    public int[] solution(String[] genres, int[] plays) {
- //        int[] answer = {};
- //        int len = genres.length;        
- //        Obj[] objArr = new Obj[len];
- //        int i, j;
- //        
- //        for(i = 0; i < len; i++)
- //            objArr[i] = new Obj(genres[i], i, plays[i], plays[i]);                
- //                    
- //        for(i = 0; i < len; i++) {
- //            for(j = i+1; j < len; j++) {             
- //                //같은 장르일 경우
- //                if(objArr[i].genre.equals(genres[j])){
- //                                        
- //                }                 
- //                //다른 장르일 경우
- //                if(i == len -1){
- //                    
- //                }
- //            }
- //        }
- //        
- //        // i = 0;
- //        // for(Obj o : objArr){
- //        //     System.out.print("genre: "+ o.genre + ", ");
- //        //     System.out.print("idx: "+ o.idx.get(i) + ", ");
- //        //     System.out.print("value: "+ o.value.get(i) + ", ");
- //        //     System.out.print("total: "+ o.total+"\n");
- //        //     i++;
- //        // }            
- //        
- //        return answer;
- //    }
- //}
+//
+//
+// import java.util.*;
+//
+//class Element{
+//    int value;
+//    int idx;
+//    
+//    public Element(int value, int idx){
+//        this.value = value;
+//        this.idx = idx;
+//    }
+//}
+//
+//class Obj{
+//    String genre = "";    
+//    List<Element> list = null;    
+//    Set<String> keys = null;
+//    HashMap<String, List<Element>> hash = null;    
+//    Iterator<String> itr = null;        
+//    int a = 0;        
+//    
+//    public Obj(String genre, int idx, int value){
+//        Element el = new Element(idx, value);
+//        this.genre = genre;
+//        
+//        if(hash != null){
+//            keys = hash.keySet();
+//            itr = keys.iterator();
+//            
+//            while(itr.hasNext()){
+//                if(genre.equals(itr)) {
+//                    list.add(el);
+//                    hash.put(itr.toString(), list);
+//                    a = 1;
+//                }              
+//                itr.next();
+//            }
+//        }                
+//                                
+//        if(a == 0) {
+//            hash = new HashMap<>();
+//            list = new ArrayList<>();
+//            list.add(el);
+//            hash.put(genre, list);
+//        }       
+//        for(Element e : hash.get("classic"))
+//            System.out.println("idx: "+e.idx +", "+e.value);
+//    }
+//    
+//}
+//
+//class Solution {
+//    public int[] solution(String[] genres, int[] plays) {
+//        int[] answer = {};
+//        int len = genres.length;        
+//        Obj[] objArr = new Obj[len];
+//        
+//        for(int i = 0; i < len; i++){
+//            objArr[i] = new Obj(genres[i], i, plays[i]);        
+//            System.out.println();
+//        }        
+//        
+//        return answer;
+//    }
+//}

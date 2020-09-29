@@ -70,8 +70,96 @@
 //    }
 //}
 //
+//내 풀이(2)
 //
-//내 풀이 미완성
+//import java.util.*;
+//
+//class Element implements Comparable<Element> {
+//    int idx;
+//    int value;    
+//    
+//    public Element(int idx, int value){
+//        this.idx = idx;
+//        this.value = value;        
+//    }
+//    
+//    @Override
+//    public int compareTo(Element el){
+//        if(this.value > el.value)
+//            return -1;
+//        return 1;
+//    }
+//}
+//
+//class Obj implements Comparable<Obj> {
+//    String genre = "";        
+//    List<Element> list = null;            
+//    int total = 0;
+//    
+//    public Obj(String genre, int idx, int value){
+//        Element el = new Element(idx, value);
+//        this.genre = genre;
+//        list = new ArrayList<Element>();
+//        list.add(el);                
+//    }
+//    
+//    @Override
+//    public int compareTo(Obj o){
+//        if(this.total > o.total)
+//            return -1;
+//        return 1;
+//    }
+//    
+//}
+//
+//class Solution {
+//    public int[] solution(String[] genres, int[] plays) {
+//        int[] answer = null;
+//        int len = genres.length;        
+//        List<Obj> list = new ArrayList<Obj>();
+//        int a = 0;
+//        int big = 0;
+//        int idx = -1;
+//        int LOOPCNT = 2;
+//        String gnre = "";
+//        
+//        for(int i = 0; i < len; i++){
+//            for(Obj obj : list){
+//                //genre에 해당하는 Object가 만들어졌을 경우
+//                if(genres[i].equals(obj.genre)){
+//                    obj.total += plays[i];
+//                    obj.list.add(new Element(i, plays[i]));
+//                    a = 1;
+//                    break;
+//                }   
+//            }
+//            //genre에 해당하는 Object가 만들어져 있지 않은 경우
+//            if(a == 0)
+//                list.add(new Obj(genres[i], i, plays[i]));
+//            a = 0;
+//        }                  
+//        
+//        Collections.sort(list);
+//        
+//        Obj tmpList = null;
+//        len = list.size();
+//        answer = new int[len*LOOPCNT];        
+//        
+//        for(int i = 0; i < len; i++){
+//            tmpList = list.get(i);
+//            Collections.sort(tmpList.list);                        
+//            
+//            for(int j = 0; j < LOOPCNT; j++ ){
+//                answer[j+i*2] = tmpList.list.get(j).idx;
+//            }
+//        }    
+//        
+//        return answer;
+//    }
+//}
+//
+//
+//내 풀이 미완성(1)
 //
 //
 //

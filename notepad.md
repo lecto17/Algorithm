@@ -3,6 +3,7 @@
 유클리드 호제법이란?
 
 static int gcd(int a, int b) {
+
 	while(b!=0) {	
 		int r=a%b;
 		a=b;

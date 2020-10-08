@@ -1,3 +1,9 @@
+**StringBuffer와 StringBuilder의 차이 //참조 :https://12bme.tistory.com/42
+StringBuffer의 경우 각 메서드별로 Synchronized Keyword가 존재하여, 멀티 스레드 환경에서도 동기화를 지원하는 반면,
+StringBuilder는 동기화를 지원하지 않는다.
+cf)String, StringBuilder, StringBuffer의 차이점 정리해놓기
+
+
 **유클리드 호제법  참조 : https://velog.io/@mkdevelop5002/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EB%AC%B8%EC%A0%9C%ED%92%80%EC%9D%B4N%EA%B0%9C%EC%9D%98-%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98-with-JAVA
 
 유클리드 호제법이란?

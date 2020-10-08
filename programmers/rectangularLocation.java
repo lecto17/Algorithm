@@ -1,4 +1,22 @@
 //직사각형 좌표구하기
+//
+//최적 풀이
+//생각도 못한 비트연산자로
+//class Solution {
+//    public int[] solution(int[][] v) {
+//        int[] answer = new int[2];
+//
+//        answer[0] = v[0][0] ^ v[1][0] ^ v[2][0];
+//        answer[1] = v[0][1] ^ v[1][1] ^ v[2][1];
+//
+//        return answer;
+//    }
+//}
+//
+//
+//
+//
+//내풀이
 
 import java.util.*;
 

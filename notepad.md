@@ -1,6 +1,8 @@
 **StringBuffer와 StringBuilder의 차이 //참조 :https://12bme.tistory.com/42
+
 StringBuffer의 경우 각 메서드별로 Synchronized Keyword가 존재하여, 멀티 스레드 환경에서도 동기화를 지원하는 반면,
 StringBuilder는 동기화를 지원하지 않는다.
+
 cf)String, StringBuilder, StringBuffer의 차이점 정리해놓기
 
 

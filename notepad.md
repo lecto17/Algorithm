@@ -1,3 +1,49 @@
+**세개 이상의 table join
+SELECT distinct p.ID, p.NAME
+FROM PLACES AS p
+LEFT JOIN SCHEDULES AS s ON p.ID = s.ID
+LEFT JOIN PLACE_REVIEWS AS pr on pr.PLACE_ID = p.ID
+WHERE s.SCHEDULED_AT = DATE('2019-01-06') 
+AND pr.CREATED_AT < DATE('2019-01-06')
+
+
+**SQL 특정 날짜 이전의 data 출력하기
+SELECT * FROM table where datecolumn(비교할 시간 컬럼) < '2019-01-06'(비교 기준) 
+혹은,
+SELECT * FROM table where datecolumn(비교할 시간 컬럼) < Date('2019-01-06')
+
+
+**Java Map 반복하는 법
+Map<String, String> map = new HashMap<String, String>();
+map.put("키1", "값1");
+map.put("키2", "값2");
+map.put("키3", "값3");
+map.put("키4", "값4");
+map.put("키5", "값5");
+
+//방법1
+Iterator<String> keys = map.KeySet().iterator();
+while( keys.hasNext() ){
+   String key = keys.next();
+}
+
+//방법2
+for( Map.Entry<String, String> el : map.entrySet() ){
+   System.out.println(String.format("키 : %s, 값: %s", el.getKey(), el.getValue()))
+}
+
+//방법3
+for( String key : map.keySet() ) {
+   System.out.println(String.format("키 : %s, 값: %s", key, map.get(key)));
+}
+
+
+
+**Int to String / String to Int
+int to String -> Integer.toString(정수형)
+String to int -> Integer.parseInt(문자형)
+
+
 **StringBuffer와 StringBuilder의 차이 //참조 :https://12bme.tistory.com/42
 
 StringBuffer의 경우 각 메서드별로 Synchronized Keyword가 존재하여, 멀티 스레드 환경에서도 동기화를 지원하는 반면,

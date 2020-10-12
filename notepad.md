@@ -1,3 +1,19 @@
+** 진법 변환 알고리즘
+eg)
+int quotient = 48;//이 숫자를 아래의 진수로 표현하고자 함
+int cardinalNum = 7; // 7진수로 48을 표현하는 것이 목표
+List<Integer> list = new ArrayList<Integer>(); // 7진수로 표현되는 수들을 저장할 list
+
+while(quotient != 0){
+   
+}
+
+
+
+**SQL 날짜 더하기, String <-> Date 변환, Calendar -> String 변환
+참조 : https://yuja-kong.tistory.com/26
+
+
 **세개 이상의 table join
 SELECT distinct p.ID, p.NAME
 FROM PLACES AS p
@@ -6,6 +22,22 @@ LEFT JOIN PLACE_REVIEWS AS pr on pr.PLACE_ID = p.ID
 WHERE s.SCHEDULED_AT = DATE('2019-01-06') 
 AND pr.CREATED_AT < DATE('2019-01-06')
 
+
+**SQL 날짜 비교
+SELECT * FROM TABLE_NAME WHERE DATE(TIMESTAMP_COLUMN) = DATE('2019-01-06')
+혹은,
+SELECT * FROM TABLE_NAME WHERE DATE(TIMESTAMP_COLUMN) = NOW()
+
+
+cf) 지난 일주일 간의 레코드 조회
+SELECT * FROM TABLE_NAME WHERE DATE(TIMESTAMP_COLUMN) >= DATE_SUB(NOW(), INTERVAL 7 DAY);
+
+
+cf)이번 달에 등록된 레코드 조회
+SELECT * FROM TABLE_NAME WHERE DATE(TIMESTAMP_COLUMN) >= DATE_FORMAT(NOW(), '%Y-%m-01')
+
+cf) 이번 년도에 등록된 레코드 조회
+SELECT * FROM TABLE_NAME WHERE DATE(TIMESTAMP_COLUMN) >= DATE_FORMAT(NOW(), '%y-01-01');
 
 **SQL 특정 날짜 이전의 data 출력하기
 SELECT * FROM table where datecolumn(비교할 시간 컬럼) < '2019-01-06'(비교 기준) 

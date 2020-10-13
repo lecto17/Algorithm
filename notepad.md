@@ -1,4 +1,5 @@
 **2차원 배열 정렬 // 참고 : https://ramees.tistory.com/53
+
 int[][] arr = {{2,6}, {1,8}, {1,2}};
 
 만약, 배열을 정렬하기 위해 다음과 같이 한 다면
@@ -11,7 +12,9 @@ exception이 발생한다.
 으로 해야 한다. 이 문장 실행 후 출력 결과는 
 
 1 8
+
 1 2
+
 2 6
 
 으로 나타난다.
@@ -19,12 +22,18 @@ exception이 발생한다.
 배열 내의 첫번째 원소는 정렬이 됬지만 2번째 원소에 대해서도 오름차순으로 정렬할 경우에는 다음과 같이 해야 한다.
 
 Arrays.sort(arr, (o1, o2) -> {
+
    if(o1[0] == o2[0]) {
-      return Integer.compare(o1[1], o2[1]);
+   
+      return Integer.compare(o1[1], o2[1]);      
    }
+   
    else {
+   
       return Integer.compare(o1[0], o2[0]);
+      
    }
+   
 }
 
 첫번째 element가 같으면 두번째 element로 비교하라는 내용이다.
@@ -34,12 +43,17 @@ Arrays.sort(arr, (o1, o2) -> {
 ** 진법 변환 알고리즘
 eg)
 int quotient = 48;//이 숫자를 아래의 진수로 표현하고자 함
+
 int cardinalNum = 7; // 7진수로 48을 표현하는 것이 목표
+
 List<Integer> list = new ArrayList<Integer>(); // 7진수로 표현되는 수들을 저장할 list
 
 while(quotient != 0){
+
    list.add(quotient % cardiNum);
+   
    quotient /= cardinalNum;
+   
 }
 
 Collections.sort(list);

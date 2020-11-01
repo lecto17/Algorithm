@@ -41,6 +41,7 @@ Arrays.sort(arr, (o1, o2) -> {
 
 
 ** 진법 변환 알고리즘
+
 eg)
 int quotient = 48;//이 숫자를 아래의 진수로 표현하고자 함
 
@@ -50,15 +51,18 @@ List<Integer> list = new ArrayList<Integer>(); // 7진수로 표현되는 수들
 
 while(quotient != 0){
 
-   list.add(quotient % cardiNum);
+   list.add(quotient % cardinalNum);
    
    quotient /= cardinalNum;
    
 }
 
-Collections.sort(list);
+Collections.reverse(list); // list에 들어가 있는 원소들을 뒤집어야 quotient의 값을 나타내기에
+
 for(Integer el : list)
    System.out.print(el+" ");
+
+cf) 배열 뒤집기 : 배열.length / 2 만큼 루프하면서 맨좌측(다음 루프 시에는 맨좌측 다음 요소), 맨우측값(다음 루프 시에는 맨 우측 전 요소)을 바꿔준다.
 
 
 

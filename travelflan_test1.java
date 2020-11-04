@@ -1,4 +1,9 @@
 //주석 친 부분으로 iterator를 사용하지 않고도 해결할 수 있다.
+//
+//문제
+//Array that contains product's price 
+//please select the most commonly used price as the output
+//EX) Input : [500, 200, 300, 400, 500, 600, 400, 500] / Output : 500
 
 import java.util.*;
 

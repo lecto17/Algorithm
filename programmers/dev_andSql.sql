@@ -1,0 +1,13 @@
+# -- 코드를 입력하세요
+SELECT a.OWNER AS NAME, a.x AS AX, b.x AS BX, ((a.x - b.x)  + (a.y - b.y)) AS DISTANCE
+FROM HOUSE_LOCATIONS AS a
+LEFT OUTER JOIN HOUSE_LOCATIONS  as b
+# on a.owner = b.owner
+GROUP BY a.OWNER
+HAVING MAX(sub(a.x, b.x))
+
+# SELECT sub(x,Y) as subtraction FROM HOUSE_LOCATIONS;
+
+
+# SELECT (HOUSE_LOCATIONS.x - HOUSE_LOCATIONS.y) * (HOUSE_LOCATIONS.x - HOUSE_LOCATIONS.y) FROM HOUSE_LOCATIONS
+# WHERE HOUSE_LOCATIONS.owner = 'ben';

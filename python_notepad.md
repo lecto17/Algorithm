@@ -1,3 +1,8 @@
+**for문
+for i in range(1, 10): #i가 1부터 10 전까지 반복, i는 1부터 9까지 반복됨.
+    print("%d", % i)
+
+
 **파이썬 현재 날짜 구하기 // 출처: https://yujuwon.tistory.com/entry/현재-날짜-가져오기 [Ju Factory]
 
 from datetime import datetime

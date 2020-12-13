@@ -34,6 +34,99 @@
 //}
 
 
+//재풀이
+//
+//import java.util.Arrays;
+//import java.util.ArrayList;
+//import java.util.List;
+//
+//class Solution {
+//    List<Integer> list = new ArrayList<Integer>();
+//
+//    public String solution(int[] numbers) {
+//        String answer = null;
+//        //findBiggestNum(numbers, answer);
+//        answer = findBiggestNum(numbers);
+//        return answer;
+//    }
+//
+//    public String[] intToStrArr(List<Integer> list){
+//        int size = list.size();
+//        String[] strArr = new String[size];
+//        for(int i = 0; i < size; i++)
+//            strArr[i] = Integer.toString(list.get(i));
+//
+//        return strArr;
+//    }
+//
+//    public String findBiggestNum(int[] numbers){
+//        StringBuffer sb = new StringBuffer();
+//        String[] arr = new String[numbers.length];
+//        String[] temp = new String[numbers.length];
+//        int[] visited = new int[numbers.length];
+//        int i = 0;
+//        int num =  9;
+//        String exchange;
+//        for(Integer el : numbers)
+//            arr[i++] = el.toString();
+//
+//        i = 0;
+//        while(true){
+//            if(i >= numbers.length ) {
+//                if(list.size() != 0) {
+//                    //arr = list.toArray(new String[list.size()]);
+//                    temp = intToStrArr(list);
+//                    // Arrays.sort(arr, Collections.reverseOrder());
+//
+//                    Arrays.sort(temp);
+//
+//                    // for(String el : temp)
+//                    //     System.out.print(el+"\t");
+//                    // System.out.println();
+//                    for(int q = 0; q < temp.length; q++){
+//                        if(!temp[0].contains("0") && temp.length >= 2){
+//                            exchange = temp[0];
+//                            // System.out.print("q: "+q+", temp[q]: "+ exchange+", ");
+//                            for(int k=1; k < temp.length; k++){
+//                                temp[k-1] = temp[k];
+//                            }
+//                            temp[temp.length-1] = exchange;
+//
+//                            // System.out.println("\ntemp");
+//                            // for(String el : temp)
+//                            //     System.out.print(el+"\t");
+//                            // System.out.println();
+//                        }
+//                    }
+//
+//                    // System.out.println();
+//                    // for(String el : temp)
+//                    //     System.out.print(el+"\t");
+//
+//                    for(int j = temp.length - 1; j >= 0; j--){
+//                        sb.append(temp[j]);
+//                    }
+//                    list.clear();
+//                }
+//                num--;
+//                i = 0;
+//            }
+//            if(num == 0)
+//                break;
+//            if(visited[i] != 1 && arr[i].contains(Integer.toString(num))){
+//                list.add(numbers[i]);
+//                visited[i] = 1;
+//            }
+//            i++;
+//        }
+//
+//
+//
+//        return sb.toString();
+//    }
+//}
+
+
 // 내풀이
 // 위 풀이에서의 comparator 개념과 0000처럼 0으로만 구성되어 있는 숫자들에 대해서는 고려했다고 생각함
 //import java.util.Arrays;

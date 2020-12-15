@@ -18,9 +18,9 @@ IDE = (Intergrated Development Environment)통합 개발 환경: 코딩, 디버�
 3 ** 5 -> 3의 5제곱
 
 
-![image](https://user-images.githubusercontent.com/53415000/102231067-e8b3a700-3f30-11eb-83dc-cdbaa7778496.png)
+![image](https://user-images.githubusercontent.com/53415000/102236357-c6248c80-3f36-11eb-85db-46ea8aa408cd.png)
 
-![image](https://user-images.githubusercontent.com/53415000/102231237-18fb4580-3f31-11eb-99c9-4e20677492ad.png)
+![image](https://user-images.githubusercontent.com/53415000/102236364-c9b81380-3f36-11eb-8704-6fa3d126fe33.png)
 
 
   
@@ -180,6 +180,7 @@ Flowgorithm – 순서도를 주면 자동으로 순서도에 해당하는 코�
 ![image](https://user-images.githubusercontent.com/53415000/102235863-2535d180-3f36-11eb-8266-a4579cd43c6a.png)
 
 ![image](https://user-images.githubusercontent.com/53415000/102235883-2c5cdf80-3f36-11eb-8770-64cd442e44e6.png)
+
 
 
 

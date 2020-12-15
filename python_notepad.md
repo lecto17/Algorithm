@@ -8,6 +8,10 @@ IDE = (Intergrated Development Environment)통합 개발 환경: 코딩, 디버�
 출력값은 ?  -> 3
 7 // 2 -> 7 / 2의 소수점을 버린다.
 3 ** 5 -> 3의 5제곱
+![image](https://user-images.githubusercontent.com/53415000/102231067-e8b3a700-3f30-11eb-83dc-cdbaa7778496.png)
+
+![image](https://user-images.githubusercontent.com/53415000/102231237-18fb4580-3f31-11eb-99c9-4e20677492ad.png)
+
 
   
 쉘 모드에서 print() 함수 생략가능
@@ -17,6 +21,7 @@ IDE = (Intergrated Development Environment)통합 개발 환경: 코딩, 디버�
  
 
  
+![image](https://user-images.githubusercontent.com/53415000/102231376-42b46c80-3f31-11eb-9bdc-81157a238b1e.png)
 
 컴마를 써서 문자열을 이어 쓰는 경우 // 변수를 중간에 사용해야 되는 경우
 컴마를 써서 문자열을 이어 쓰면 한글자가 띄어서 출력된다.

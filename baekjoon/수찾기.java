@@ -37,3 +37,45 @@ public class Test {
 
     }   
 }
+
+
+
+//무작정 알고리즘
+import java.util.*;
+
+public class Test {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nArr = new int[n];
+
+        for(int i=0; i < n; i++){
+            nArr[i] = sc.nextInt();
+        }
+
+        int m = sc.nextInt();
+        int[] mArr = new int[m];
+
+        for(int i=0; i < m; i++){
+            mArr[i] = sc.nextInt();
+        }
+
+        sc.close();
+
+        int i,j;
+
+
+        for(i =0; i < m; i++){
+            for(j =0; j < n; j++){
+                if(mArr[i] == nArr[j]){
+                    System.out.println(1);
+                    j =0;
+                    break;
+                }
+            }
+            if(j == n)
+                System.out.println(0);
+        }
+    }
+}

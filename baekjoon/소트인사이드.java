@@ -60,3 +60,22 @@ public class Test {
         System.out.println(temp);
     }
 }
+
+//Scanner 보다 BufferedReader를 사용하는 것이 빠르다.
+//
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Test {
+
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        char[] arr = br.readLine().toCharArray();
+
+        for(int i=arr.length-1; i >= 0; i--){
+            System.out.print(arr[i]);
+        }
+    }
+}

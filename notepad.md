@@ -1,3 +1,40 @@
+** PriorityQueue       
+PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+//cf) new PriorityQueue<>(Collections.reverseOrder()); // 내림차순으로 저장
+
+pq.add(1);
+
+pq.add(20);
+
+pq.add(30);
+
+pq.add(15);
+
+
+while(!pq.isEmpty())
+
+    System.out.println(pq.poll()); // 출력결과는 natural ordering(오름차순)
+
+
+그런데, pq에 add된 값들을 찍어보려고 
+
+'System.out.println(pq);'
+
+하면 제대로 정렬이 안되어서 값이 출력되는 현상이 있었다.
+
+그런데 위의 코드와 같이 poll로 반복해서 pq의 값을 찍으면 순서가 잘 정렬되어 출력됨을 확인할 수 있다. 
+
+그래서 왜 그럴까 찾아본 결과, stackoverflow에서 다음과 같은 답변을 찾을 수 있었다.
+
+
+-> The reason is that the PriorityQueue is never completely sorted internally, lookup how a heap works for more detail. Polling items from it fixes the heap during the calls, thus it should output the elements in sorted order.
+
+
+PriorityQueue가 내부적으로는 완전히 정렬히 되어있지 않다는데, 왜 그렇게 완전히 정렬되지 않게 두었을까 궁금하다. 그 이유에 대해서도 찾아보고 추가해야 겠다.
+
+
+
 **2차원 배열 정렬 // 참고 : https://ramees.tistory.com/53
 
 int[][] arr = {{2,6}, {1,8}, {1,2}};

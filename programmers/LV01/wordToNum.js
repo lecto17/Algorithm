@@ -1,3 +1,16 @@
+// 최적 풀이
+//
+//function solution(s) {
+//    var answer = s;
+//    let numbers = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+    
+//    for (let i=0; i<numbers.length; i++) {
+//        answer = answer.split(numbers[i]);
+//        answer = answer.join(i);
+//    }
+//    return Number(answer);
+}
+
 function check(str) {
     switch (str) {
         case "zero":

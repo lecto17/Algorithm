@@ -1,26 +1,13 @@
-function solution(n, list1, list2) {
-  let biggest = 0;
-  let sum = 0,
-    idx = -1;
-  list1.sort((a, b) => a - b);
+const balances = [25, 10, 5, 1];
+function solution(num) {
+  let answer = "";
+  let total = num;
 
-  for (const el of list1) {
-    for (let idxOfL2 = 0; idxOfL2 < list2.length; idxOfL2++) {
-      if (biggest <= list2[idxOfL2]) {
-        biggest = list2[idxOfL2];
-        idx = idxOfL2;
-      }
-
-      if (idxOfL2 === list2.length - 1) {
-        sum += el * list2[idx];
-        list2.splice(idx, 1);
-      }
-    }
-    biggest = 0;
+  for (const balance of balances) {
+    answer += `${Math.floor(total / balance)} `;
+    total -= Math.floor(total / balance) * balance;
   }
-
-  console.log(sum);
-  return sum;
+  return answer;
 }
 
 const readline = require("readline");
@@ -34,10 +21,14 @@ rl.on("line", function (line) {
   //여러줄 입력
   input.push(line);
 }).on("close", function () {
-  let n = parseInt(input[0]);
-  //띄어쓰기 기준으로 배열에 넣기
-  let aList = input[1].split(" ").map((el) => parseInt(el));
-  let bList = input[2].split(" ").map((el) => parseInt(el));
-  solution(n, aList, bList);
+  console.log("shi: ", input.shift());
+  const answer = [];
+
+  for (const money of input) {
+    answer.push(solution(Number(money)));
+  }
+
+  console.log(answer.join("\n"));
+  return answer.join("\n");
   process.exit();
 });

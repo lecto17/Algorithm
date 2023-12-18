@@ -1,14 +1,14 @@
 function solution(list) {
-  // list.sort().pop();
-  // console.log("dd: ", list);
-  // if (!list.length) return 0;
-  let biggest = 0;
-  const sum = list.reduce((acc, a) => {
-    if (biggest < a) biggest = a;
-    return (acc += a);
-  }, 0);
+  list.sort().pop();
 
-  console.log(sum - biggest);
+  if (!list.length) {
+    console.log(0);
+    return 0;
+  }
+
+  const answer = list.reduce((acc, a) => (acc += a), 0);
+  console.log(answer);
+  return answer;
 }
 
 const readline = require("readline");

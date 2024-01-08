@@ -12,17 +12,22 @@ function solution(n) {
   answer = getRecursive(n, POCKETS[1], POCKETS[0]);
   if (answer) {
     if (candidate > answer) {
-      console.log("1: ", answer);
-      return answer;
+      console.log(answer);
+      return;
     }
-    console.log("2: ", candidate);
-    return candidate;
+    console.log(candidate);
+    return;
   }
 
-  if (!answer) {
+  if (
+    (!answer && candidate === 9999) ||
+    (answer === -1 && candidate === 9999)
+  ) {
     console.log("-1");
-    return -1;
+    return;
   }
+
+  console.log(candidate);
 }
 
 function getRecursive(weight, pocket1, pocket2) {

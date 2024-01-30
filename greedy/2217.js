@@ -34,7 +34,7 @@
  * 20
  * 30
  * 40
- * => 
+ * => 60
  
  *
  * [ 풀이 방법 ]
@@ -56,7 +56,7 @@ function solution(numbers) {
   numbers.sort((a, b) => b - a);
 
   for (let i = 0; i < numbers.length; i++) {
-    accumulator += numbers[i];
+    accumulator = numbers[i];
 
     if (biggest < parseInt(accumulator * (i + 1))) {
       biggest = parseInt(accumulator * (i + 1));

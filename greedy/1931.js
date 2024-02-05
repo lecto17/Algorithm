@@ -1,32 +1,96 @@
+// TC
+/**
+ * TC 1
+ * 4
+ * 1 2
+ * 2 3
+ * 3 5
+ * 3 6
+ *
+ * => 3
+ *
+ *
+ * TC 2
+ * 4
+ * 1 2
+ * 3 5
+ * 2 3
+ * 3 6
+ *
+ * => 3
+ *
+ *
+ * TC 3
+ * 4
+ * 1 1
+ * 2 2
+ * 4 4
+ * 3 3
+ *
+ * => 4
+ *
+ *
+ * TC 4
+ * 4
+ * 1 2
+ * 2 3
+ * 3 4
+ * 4 5
+ *
+ * => 4
+ *
+ *
+ * TC 5
+ * 4
+ * 0 1
+ * 0 2
+ * 1 4
+ * 4 5
+ *
+ * => 3
+ */
+
 let schedules = [];
 
 function solution(numbers) {
   let biggest = 0;
 
   for (let i = 0; i < numbers.length; i++) {
-    for (let j = i + 1; j < numbers.length; j++) {
-      getValidTime(numbers[j]);
+    getValidTime(numbers[i]);
+
+    if (biggest <= schedules.length) {
+      biggest = schedules.length;
     }
-
-    if (biggest < schedules.length) biggest = schedules.length;
-
-    numbers.shift();
-    schedules = [];
   }
-
   console.log(biggest);
 }
 
 function getValidTime([startTime, endTime]) {
+  if (startTime === endTime) {
+    schedules.push([startTime, endTime]);
+    return;
+  }
+
   for (let i = 0; i < schedules.length; i++) {
     const [start, end] = schedules[i];
+
+    console.log(
+      start,
+      end,
+      startTime,
+      endTime,
+      endTime > start && endTime <= end,
+      startTime >= start && startTime < end
+    );
+
     if (
-      (startTime >= start && startTime <= end) ||
-      (endTime >= start && endTime <= end)
+      (endTime > start && endTime <= end) ||
+      (startTime >= start && startTime < end)
     ) {
       return;
     }
   }
+
   schedules.push([startTime, endTime]);
 }
 
@@ -43,9 +107,14 @@ rl.on("line", function (line) {
 }).on("close", function () {
   input.shift();
   solution(
-    input
-      .map((el) => el.split(" ").map((el) => parseInt(el)))
-      .sort((a, b) => a[1] - a[0] - (b[1] - b[0]))
+    input.map((el) => el.split(" ").map((el) => parseInt(el)))
+    // .sort((a, b) => {
+    //   const duration = a[1] - a[0] - (b[1] - b[0]);
+    //   if (duration == 0) {
+    //     return a[0] - b[0];
+    //   }
+    //   return duration;
+    // })
   );
   process.exit();
 });

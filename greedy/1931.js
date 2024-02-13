@@ -12,10 +12,10 @@
  *
  * TC 2
  * 4
- * 1 2
- * 3 5
  * 2 3
  * 3 6
+ * 1 2
+ * 3 5
  *
  * => 3
  *
@@ -48,12 +48,26 @@
  * 4 5
  *
  * => 3
+ *
+ * TC 6
+ * 8
+ * 0 0
+ * 1 8
+ * 3 4
+ * 2 3
+ * 2 8
+ * 3 9
+ * 1 5
+ * 3 5
+ *
+ * => 3
  */
 
 let schedules = [];
 
 function solution(numbers) {
   let biggest = 0;
+  console.log("d: ", numbers);
 
   for (let i = 0; i < numbers.length; i++) {
     getValidTime(numbers[i]);
@@ -62,7 +76,7 @@ function solution(numbers) {
       biggest = schedules.length;
     }
   }
-  console.log(biggest);
+  console.log(biggest, schedules);
 }
 
 function getValidTime([startTime, endTime]) {
@@ -80,12 +94,14 @@ function getValidTime([startTime, endTime]) {
       startTime,
       endTime,
       endTime > start && endTime <= end,
-      startTime >= start && startTime < end
+      startTime >= start && startTime < end,
+      startTime <= start && endTime >= end
     );
 
     if (
       (endTime > start && endTime <= end) ||
-      (startTime >= start && startTime < end)
+      (startTime >= start && startTime < end) ||
+      (startTime <= start && endTime >= end && start != end)
     ) {
       return;
     }
@@ -107,14 +123,15 @@ rl.on("line", function (line) {
 }).on("close", function () {
   input.shift();
   solution(
-    input.map((el) => el.split(" ").map((el) => parseInt(el)))
-    // .sort((a, b) => {
-    //   const duration = a[1] - a[0] - (b[1] - b[0]);
-    //   if (duration == 0) {
-    //     return a[0] - b[0];
-    //   }
-    //   return duration;
-    // })
+    input
+      .map((el) => el.split(" ").map((el) => parseInt(el)))
+      .sort((a, b) => {
+        const duration = a[1] - a[0] - (b[1] - b[0]);
+        if (duration == 0) {
+          return a[0] - b[0];
+        }
+        return duration;
+      })
   );
   process.exit();
 });

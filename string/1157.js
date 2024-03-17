@@ -13,8 +13,13 @@ function solution(text) {
   const array = Array.from(answerMap, ([key, value]) => ({ [key]: value }));
   array.sort((a, b) => Object.values(b)[0] - Object.values(a)[0]);
 
+  if (array.length === 1) {
+    console.log(Object.keys(array[0])[0]);
+    return;
+  }
+
   const [key, val] = Object.entries(array[0])[0];
-  const [key2, val2] = Object.entries(array[1])[0];
+  const [_, val2] = Object.entries(array[1])[0];
 
   if (val === val2) {
     console.log("?");

@@ -1,3 +1,4 @@
+<!-- return 조건에 대해 간단하게 정리되는 것이 필요. -->
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -9,18 +10,10 @@
         let answer = "";
 
         function DFS(L) {
-          if (L === 1 || L / 2 === 1) {
-            return;
-          } else {
-            const quo = parseInt(L / 2);
-            const rem = L % 2;
-            DFS(quo);
-            if (L > 3) answer += String(rem);
-            else if (L === 1) {
-              answer += "1";
-            } else {
-              answer += String(quo) + String(rem);
-            }
+          if (L === 0) return;
+          else {
+            DFS(parseInt(L / 2));
+            answer += L % 2;
           }
         }
 
@@ -28,7 +21,7 @@
         return answer;
       }
 
-      console.log(solution(15));
+      console.log(solution(13));
     </script>
   </body>
 </html>

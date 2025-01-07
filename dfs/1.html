@@ -10,11 +10,17 @@
 
         function DFS(L) {
           if (L === 1 || L / 2 === 1) {
-            answer += (parseInt(L / 2) && L / 2) + String(L % 2);
             return;
           } else {
-            DFS(parseInt(L / 2));
-            if (L > 3) answer += String(L % 2);
+            const quo = parseInt(L / 2);
+            const rem = L % 2;
+            DFS(quo);
+            if (L > 3) answer += String(rem);
+            else if (L === 1) {
+              answer += "1";
+            } else {
+              answer += String(quo) + String(rem);
+            }
           }
         }
 

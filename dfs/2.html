@@ -1,0 +1,37 @@
+<!-- return 조건에 대해 간단하게 정리되는 것이 필요. -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n) {
+        let chkArr = Array.from({ length: n + 1 }).fill(0);
+        const initialValue = "";
+        let answer = [];
+
+        function DFS(v) {
+          if (v === n + 1) {
+            let tmp = "";
+            for (let i = 0; i <= n; i++) {
+              if (chkArr[i] === 1) tmp += i + " ";
+            }
+            if (tmp.length) console.log(tmp.trim());
+          } else {
+            chkArr[v] = 1;
+            DFS(v + 1);
+            chkArr[v] = 0;
+            DFS(v + 1);
+          }
+        }
+
+        DFS(1);
+        console.log(answer);
+      }
+
+      console.log(solution(3));
+    </script>
+  </body>
+</html>

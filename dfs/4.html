@@ -1,0 +1,33 @@
+<!-- return 조건에 대해 간단하게 정리되는 것이 필요. -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(scores, times, timeLimit) {
+        let big = -1;
+        let sum = 0;
+
+        function DFS(v, s, t) {
+          if (t >= timeLimit || v >= scores.length) {
+            let sum = t > timeLimit ? s - scores[v - 1] : s;
+            if (big < sum) big = sum;
+            return;
+          } else {
+            DFS(v + 1, s + scores[v], t + times[v]);
+            if (t >= timeLimit) return;
+            DFS(v + 1, s, t);
+          }
+        }
+
+        DFS(0, 0, 0);
+        console.log(big);
+      }
+
+      console.log(solution([10, 25, 15, 6, 7], [5, 12, 8, 3, 4], 20));
+    </script>
+  </body>
+</html>

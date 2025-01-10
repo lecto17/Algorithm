@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, m) {
+        function DFS(candidates) {
+          if (candidates.length === m) {
+            console.log(candidates.join(", "));
+            return;
+          } else {
+            for (let i = 0; i < n; i++) {
+              candidates.push(i + 1);
+              DFS(candidates);
+              candidates.pop();
+            }
+          }
+        }
+
+        DFS([]);
+      }
+
+      console.log(solution(3, 2));
+    </script>
+  </body>
+</html>

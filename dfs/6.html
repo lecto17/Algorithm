@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(coins, change) {
+        let answer = 0;
+        let sortedCoins = coins.sort((a, b) => b - a);
+
+        function DFS(i, remain) {
+          if (remain === 0 || i === coins.length) {
+            return;
+          } else {
+            const quo = Math.min(
+              parseInt(remain / sortedCoins[i]),
+              parseInt(100 / sortedCoins[i])
+            );
+            answer += quo;
+
+            DFS(i + 1, remain - sortedCoins[i] * quo);
+          }
+        }
+
+        DFS(0, change);
+        return answer;
+      }
+
+      console.log(solution([1, 2, 5], 16));
+    </script>
+  </body>
+</html>

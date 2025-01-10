@@ -8,23 +8,21 @@
   <body>
     <script>
       function solution(scores, times, timeLimit) {
-        let big = -1;
-        let sum = 0;
+        let answer = Number.MIN_SAFE_INTEGER;
 
-        function DFS(v, s, t) {
-          if (t >= timeLimit || v >= scores.length) {
-            let sum = t > timeLimit ? s - scores[v - 1] : s;
-            if (big < sum) big = sum;
+        function DFS(L, sum, time) {
+          if (time > timeLimit) return;
+          if (L === scores.length) {
+            answer = Math.max(answer, sum);
             return;
           } else {
-            DFS(v + 1, s + scores[v], t + times[v]);
-            if (t >= timeLimit) return;
-            DFS(v + 1, s, t);
+            DFS(L + 1, sum + scores[L], time + times[L]);
+            DFS(L + 1, sum, time);
           }
         }
 
         DFS(0, 0, 0);
-        console.log(big);
+        console.log(answer);
       }
 
       console.log(solution([10, 25, 15, 6, 7], [5, 12, 8, 3, 4], 20));

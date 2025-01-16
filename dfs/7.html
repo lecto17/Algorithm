@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(array, loopCount) {
+        let count = 0;
+        let candidates = Array.from({ length: loopCount });
+        let chk = Array.from({ length: array.length }).fill(0);
+        let answer = [];
+
+        function DFS(L) {
+          if (L === loopCount) {
+            answer.push(candidates.slice().join(" "));
+            return;
+          } else {
+            for (let i = 0; i < array.length; i++) {
+              if (!chk[i]) {
+                chk[i] = 1;
+                candidates[L] = array[i];
+                DFS(L + 1);
+                chk[i] = 0;
+              }
+            }
+          }
+        }
+
+        DFS(0);
+        return answer.join("\n") + "\n" + answer.length;
+      }
+
+      console.log(solution([3, 6, 9], 2));
+    </script>
+  </body>
+</html>

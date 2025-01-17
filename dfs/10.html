@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, answer) {
+        let answers = [];
+        let tmp = Array.from(Array(n), () => new Array(n + 1).fill(0));
+        let allCases = [];
+        let chk = Array.from({ length: n.length });
+        let candidates = Array.from({ length: n.length });
+
+        function getAllCaseDFS(L) {
+          if (L === n) {
+            allCases.push(candidates.slice());
+            return;
+          } else {
+            for (let i = 1; i <= n; i++) {
+              if (!chk[i - 1]) {
+                chk[i - 1] = 1;
+                candidates[L] = i;
+                getAllCaseDFS(L + 1);
+                chk[i - 1] = 0;
+              }
+            }
+          }
+        }
+
+        function DFS(n, r) {
+          if (tmp[n][r]) return tmp[n][r];
+          if (n === 0) return tmp[0][r];
+          // if (n - 1 === r) return;
+          else {
+            for (let i = 0; i < allCases.length; i++) {
+              tmp[0] = [0, ...allCases[i]];
+              // tmp[n][r] = DFS(n - 1, r - 1) + DFS(n - 1, r);
+              const a = DFS(n - 1, r - 1);
+              const b = DFS(n - 1, r);
+              const sum = a + b;
+              tmp[n][r] = sum;
+              console.log("ss: ", tmp.slice(), a, b, sum, answer);
+
+              if (answer === sum) answers.push(allCases[i]);
+            }
+          }
+        }
+
+        getAllCaseDFS(0, 1);
+        DFS(n - 1, n);
+        return answers;
+      }
+
+      console.log(solution(3, 8));
+    </script>
+  </body>
+</html>

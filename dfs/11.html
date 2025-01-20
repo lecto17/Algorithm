@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, count) {
+        let chk = Array.from({ length: n + 1 });
+        let answers = [];
+        let candidates = [];
+
+        function DFS(L) {
+          if (candidates.length === count) {
+            answers.push(candidates.slice());
+            return;
+          }
+          if (L === n) {
+            if (candidates.length === count) {
+              answers.push(candidates.slice());
+              return;
+            }
+          } else {
+            for (let i = 1; i <= n; i++) {
+              if (!chk[i]) {
+                chk[i] = 1;
+                candidates.push(i);
+                DFS(L + 1);
+                chk[i] = 0;
+                candidates.pop();
+              }
+            }
+          }
+        }
+
+        DFS(0);
+        return [...new Set(answers.map((el) => el.sort().join()))];
+      }
+
+      console.log(solution(4, 2));
+    </script>
+  </body>
+</html>

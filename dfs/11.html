@@ -1,3 +1,4 @@
+<!-- 조합 꼭 다시 풀어보기 -->
 <html>
   <head>
     <meta charset="UTF-8" />
@@ -6,35 +7,23 @@
   <body>
     <script>
       function solution(n, count) {
-        let chk = Array.from({ length: n + 1 });
+        let tmp = Array.from({ length: count }, () => 0);
         let answers = [];
-        let candidates = [];
 
-        function DFS(L) {
-          if (candidates.length === count) {
-            answers.push(candidates.slice());
-            return;
-          }
-          if (L === n) {
-            if (candidates.length === count) {
-              answers.push(candidates.slice());
-              return;
-            }
+        function DFS(L, s) {
+          if (L === count) {
+            answers.push(tmp.slice());
+            // return;
           } else {
-            for (let i = 1; i <= n; i++) {
-              if (!chk[i]) {
-                chk[i] = 1;
-                candidates.push(i);
-                DFS(L + 1);
-                chk[i] = 0;
-                candidates.pop();
-              }
+            for (let i = s; i <= n; i++) {
+              tmp[L] = i;
+              DFS(L + 1, i + 1);
             }
           }
         }
 
-        DFS(0);
-        return [...new Set(answers.map((el) => el.sort().join()))];
+        DFS(0, 1);
+        return answers;
       }
 
       console.log(solution(4, 2));

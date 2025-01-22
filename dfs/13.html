@@ -7,7 +7,8 @@
     <script>
       function solution(V, G) {
         let graph = Array.from(Array(V + 1), () => new Array(V + 1).fill(0));
-        let chk = [];
+        let chk = Array.from({ length: V + 1 });
+        // let chk = [];
         let paths = [];
         let answers = [];
         let idx = -1;
@@ -33,12 +34,11 @@
           } else {
             for (let i = 1; i <= V; i++) {
               if (graph[L][i]) {
-                if (!chk.includes(i)) {
-                  chk.push(i);
+                if (!chk[i]) {
+                  chk[i] = 1;
                   paths.push(i);
                   DFS(L + 1);
-                  idx = chk.indexOf(i);
-                  chk.splice(i, 1);
+                  chk[i] = 0;
                   paths.pop();
                 }
               }

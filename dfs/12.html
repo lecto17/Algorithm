@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(N, K, M) {
+        let tmp = Array.from({ length: K }, () => 0);
+        let answers = [];
+
+        function DFS(L, S) {
+          if (L === K) {
+            let sum = tmp.reduce((acc, cur) => (acc += cur), 0);
+            if (sum % M === 0) answers.push(tmp.slice());
+          } else {
+            for (let i = S; i < N.length; i++) {
+              tmp[L] = N[i];
+              DFS(L + 1, i + 1);
+            }
+          }
+        }
+
+        DFS(0, 0);
+        return answers;
+      }
+
+      console.log(solution([2, 4, 5, 8, 12], 3, 6));
+    </script>
+  </body>
+</html>

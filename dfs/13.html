@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(V, G) {
+        let graph = Array.from(Array(V + 1), () => new Array(V + 1).fill(0));
+        let chk = [];
+        let paths = [];
+        let answers = [];
+        let idx = -1;
+
+        function init() {
+          G.forEach((el) => {
+            const [row, col] = el;
+            graph[row][col] = 1;
+          });
+
+          paths.push(1);
+          chk.push(1);
+        }
+
+        function DFS(L) {
+          if (paths[paths.length - 1] === V) {
+            answers.push(paths.slice());
+            return;
+          }
+          if (L === V && paths[paths.length - 1] === V) {
+            answers.push(paths.slice());
+            return;
+          } else {
+            for (let i = 1; i <= V; i++) {
+              if (graph[L][i]) {
+                if (!chk.includes(i)) {
+                  chk.push(i);
+                  paths.push(i);
+                  DFS(L + 1);
+                  idx = chk.indexOf(i);
+                  chk.splice(i, 1);
+                  paths.pop();
+                }
+              }
+            }
+          }
+        }
+
+        init();
+        DFS(1);
+        return answers;
+      }
+
+      console.log(
+        solution(5, [
+          [1, 2],
+          [1, 3],
+          [1, 4],
+          [2, 1],
+          [2, 3],
+          [2, 5],
+          [3, 4],
+          [4, 2],
+          [4, 5],
+        ])
+      );
+    </script>
+  </body>
+</html>

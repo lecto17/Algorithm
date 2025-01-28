@@ -1,0 +1,118 @@
+<!-- <html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(endPosition, miro) {
+        let answer = 0;
+        const [endDx, endDy] = endPosition;
+        let chk = Array.from(Array(endDx + 1), () => new Array(endDx + 1));
+        const graph = Array.from(Array(8), () => new Array());
+
+        miro.forEach((row, idx) => {
+          for (let i = 0; i < row.length; i++) {
+            if (!row[i]) {
+              graph[idx + 1].push(i + 1);
+            }
+          }
+        });
+        console.log("gg: ", graph);
+
+        function DFS(L, dx, dy) {
+          if (dx === endDx && dy === endDy) {
+            answer++;
+            return;
+          } else {
+            for (let i = 0; i < graph[dx].length; i++) {
+              if (!chk[dx][dy]) {
+                chk[dx][dy] = 1;
+                DFS(L + 1, graph[dx][dy], 0);
+                chk[dx][dy] = 0;
+              }
+            }
+          }
+        }
+
+        DFS(0, 0, 0);
+        return answer;
+      }
+
+      console.log(
+        solution(
+          [6, 6],
+          [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 0, 0],
+            [1, 1, 0, 1, 0, 1, 1],
+            [1, 1, 0, 0, 0, 0, 1],
+            [1, 1, 0, 1, 1, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0],
+          ]
+        )
+      );
+    </script>
+  </body>
+</html> -->
+
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(endPosition, miro) {
+        let answer = 0;
+        const [endDx, endDy] = endPosition;
+        let xPosition = [-1, 0, 1, 0];
+        let yPosition = [0, 1, 0, -1];
+
+        function DFS(x, y) {
+          if (x === endDx && y === endDy) {
+            answer++;
+            return;
+          } else {
+            for (let i = 0; i < 4; i++) {
+              let dx = x + xPosition[i];
+              let dy = y + yPosition[i];
+
+              if (
+                dx >= 0 &&
+                dx <= 6 &&
+                dy >= 0 &&
+                dy <= 6 &&
+                miro[dx][dy] === 0
+              ) {
+                miro[dx][dy] = 1;
+                DFS(dx, dy);
+                miro[dx][dy] = 0;
+              }
+            }
+          }
+        }
+
+        miro[0][0] = 1;
+        DFS(0, 0);
+        return answer;
+      }
+
+      console.log(
+        solution(
+          [6, 6],
+          [
+            [0, 0, 0, 0, 0, 0, 0],
+            [0, 1, 1, 1, 1, 1, 0],
+            [0, 0, 0, 1, 0, 0, 0],
+            [1, 1, 0, 1, 0, 1, 1],
+            [1, 1, 0, 0, 0, 0, 1],
+            [1, 1, 0, 1, 1, 0, 0],
+            [1, 0, 0, 0, 0, 0, 0],
+          ]
+        )
+      );
+    </script>
+  </body>
+</html>

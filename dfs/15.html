@@ -67,6 +67,9 @@
       function solution(endPosition, miro) {
         let answer = 0;
         const [endDx, endDy] = endPosition;
+        let chk = Array.from(Array(endDx + 1), () =>
+          new Array(endDx + 1).fill(0)
+        );
         let xPosition = [-1, 0, 1, 0];
         let yPosition = [0, 1, 0, -1];
 
@@ -84,11 +87,12 @@
                 dx <= 6 &&
                 dy >= 0 &&
                 dy <= 6 &&
-                miro[dx][dy] === 0
+                miro[dx][dy] === 0 &&
+                chk[dx][dy] === 0
               ) {
-                miro[dx][dy] = 1;
+                chk[dx][dy] = 1;
                 DFS(dx, dy);
-                miro[dx][dy] = 0;
+                chk[dx][dy] = 0;
               }
             }
           }

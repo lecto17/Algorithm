@@ -6,36 +6,33 @@
   <body>
     <script>
       function solution(man, cow) {
-        let answer = 0;
         let dist = [-1, 1, 5];
         let queue = [man];
-        let calculated = Array.from({ length: 10001 });
-        let endFlag = false;
-        let index = -1;
+        // vertext 별 몇 번만에 갈 수 있는지.
+        // 1번 vertext(곧, 소가 1 위치에 있는 경우, 사람이 몇 번만에 1번 위치로 갈 수 있는지)
+        let vertexDist = Array.from({ length: 10001 });
+        let idx = -1;
 
-        calculated[man] = answer;
+        vertexDist[man] = 0;
 
         while (queue.length) {
-          const manPositions = [...queue];
-          queue = [];
-          answer++;
+          const position = queue.shift();
 
-          for (const position of manPositions) {
-            for (const d of dist) {
-              index = position + d;
-              if (index === cow) {
-                endFlag = true;
-                break;
-              }
-              if (!calculated[index]) {
-                queue.push(index);
-                calculated[index] = answer;
-              }
-            }
-            if (endFlag) break;
+          for (const d of dist) {
+            idx = position + d;
+
+            if (
+              vertexDist[idx] ||
+              vertexDist[idx] === 0 ||
+              idx < 0 ||
+              idx > 10000
+            )
+              continue;
+            if (idx === cow) return vertexDist[position] + 1;
+
+            queue.push(idx);
+            vertexDist[idx] = vertexDist[position] + 1;
           }
-
-          if (endFlag) return answer;
         }
       }
 

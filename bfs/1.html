@@ -9,27 +9,29 @@
         let answer = 0;
         let dist = [-1, 1, 5];
         let queue = [man];
-        let manPosition;
+        let calculated = Array.from({ length: 10001 });
         let endFlag = false;
-        let chk = [];
+        let index = -1;
+
+        calculated[man] = answer;
 
         while (queue.length) {
-          manPosition = [...queue];
+          const manPositions = [...queue];
+          queue = [];
           answer++;
 
-          for (const position of manPosition) {
-            if (chk.includes(position)) continue;
-            chk.push(position);
-
+          for (const position of manPositions) {
             for (const d of dist) {
-              const result = position + d;
-              if (result === cow) {
+              index = position + d;
+              if (index === cow) {
                 endFlag = true;
                 break;
               }
-              queue.push(result);
+              if (!calculated[index]) {
+                queue.push(index);
+                calculated[index] = answer;
+              }
             }
-
             if (endFlag) break;
           }
 

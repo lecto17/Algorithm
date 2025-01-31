@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(miro) {
+        let answer = 0;
+        const end = miro.length;
+
+        let queue = [[0, 0]];
+        let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+        let dy = [0, 1, 1, 1, 0, -1, -1, -1];
+
+        function BFS(x, y) {
+          while (queue.length) {
+            const [x, y] = queue.shift();
+
+            for (let i = 0; i < 8; i++) {
+              let xPos = x + dx[i];
+              let yPos = y + dy[i];
+
+              if (
+                xPos >= 0 &&
+                xPos < end &&
+                yPos >= 0 &&
+                yPos < end &&
+                miro[xPos][yPos] === 1
+              ) {
+                queue.push([xPos, yPos]);
+                miro[xPos][yPos] = 0;
+              }
+            }
+          }
+        }
+
+        for (let i = 0; i < end; i++) {
+          for (let j = 0; j < end; j++) {
+            if (miro[i][j] === 1) {
+              miro[i][j] = 0;
+              queue.push([i, j]);
+              BFS(i, j);
+              answer++;
+            }
+          }
+        }
+
+        return answer;
+      }
+
+      console.log(
+        solution([
+          [1, 1, 0, 0, 0, 1, 0],
+          [0, 1, 1, 0, 1, 1, 0],
+          [0, 1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 1, 1],
+          [1, 1, 0, 1, 1, 0, 0],
+          [1, 0, 0, 0, 1, 0, 0],
+          [1, 0, 1, 0, 1, 0, 0],
+        ])
+      );
+    </script>
+  </body>
+</html>

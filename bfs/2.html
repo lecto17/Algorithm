@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(island) {
+        let dx = [-1, -1, 0, 1, 1, 1, 0, -1];
+        let dy = [0, 1, 1, 1, 0, -1, -1, -1];
+        let answer = 0;
+        let end = island.length;
+
+        island[0][0] = 0;
+
+        function DFS(x, y) {
+          for (let i = 0; i < 8; i++) {
+            let xPos = x + dx[i];
+            let yPos = y + dy[i];
+
+            if (
+              xPos >= 0 &&
+              xPos < end &&
+              yPos >= 0 &&
+              yPos < end &&
+              island[xPos][yPos] === 1
+            ) {
+              island[xPos][yPos] = 0;
+              DFS(xPos, yPos);
+            }
+          }
+        }
+
+        for (let i = 0; i < island.length; i++) {
+          for (let j = 0; j < island.length; j++) {
+            if (island[i][j] === 1) {
+              console.log(++answer);
+              DFS(i, j);
+            }
+          }
+        }
+        console.log(answer);
+      }
+
+      console.log(
+        solution([
+          [1, 1, 0, 0, 0, 1, 0],
+          [0, 1, 1, 0, 1, 1, 0],
+          [0, 1, 0, 0, 0, 0, 0],
+          [0, 0, 0, 1, 0, 1, 1],
+          [1, 1, 0, 1, 1, 0, 0],
+          [1, 0, 0, 0, 1, 0, 0],
+          [1, 0, 1, 0, 1, 0, 0],
+        ])
+      );
+    </script>
+  </body>
+</html>

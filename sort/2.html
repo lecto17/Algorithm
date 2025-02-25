@@ -8,17 +8,13 @@
     <script>
       function solution(arr) {
         const count = arr.length;
-        let prev = -1,
-          temp;
 
-        for (let i = 0; i < count; i++) {
-          prev = arr[0];
-          for (let j = i + 1; j < count; j++) {
-            if (prev > arr[j]) {
-              arr[j - 1] = arr[j];
-              arr[j] = prev;
+        // ** i, j 의 loop count **
+        for (let i = 0; i < count - 1; i++) {
+          for (let j = 0; j < count - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+              [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
             }
-            prev = arr[j];
           }
         }
 

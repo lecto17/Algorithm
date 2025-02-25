@@ -19,9 +19,10 @@
             }
           }
 
-          temp = arr[idx];
-          arr[idx] = arr[i];
-          arr[i] = temp;
+          [arr[i], arr[idx]] = [arr[idx], arr[i]];
+          //   temp = arr[idx];
+          //   arr[idx] = arr[i];
+          //   arr[i] = temp;
         }
 
         return arr;

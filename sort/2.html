@@ -1,0 +1,31 @@
+<!-- Bubble Sort => 2개씩 끊어 비교한다. 맨 뒤부터 정렬이 되기 시작함 -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const count = arr.length;
+        let prev = -1,
+          temp;
+
+        for (let i = 0; i < count; i++) {
+          prev = arr[0];
+          for (let j = i + 1; j < count; j++) {
+            if (prev > arr[j]) {
+              arr[j - 1] = arr[j];
+              arr[j] = prev;
+            }
+            prev = arr[j];
+          }
+        }
+
+        return arr;
+      }
+
+      console.log(solution([13, 5, 7, 11, 23, 15]));
+    </script>
+  </body>
+</html>

@@ -32,3 +32,32 @@
   </body>
 </html>
 
+<!-- greedy 구현 -->
+<!-- <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(cacheSize, arr) {
+        const temp = []
+        let idx = -1;
+
+        for (let i = 0; i < arr.length; i++) {
+          idx = temp.indexOf(arr[i]);
+          
+          if (idx === -1) {
+            temp.unshift(arr[i]);
+            if (temp.length > cacheSize) temp.pop();
+          } else {
+            temp.splice(idx, 1);
+            temp.unshift(arr[i]);
+          }
+        }
+
+        return temp;
+      }
+
+      console.log(solution(5, [1, 2, 3 ,2, 6, 2, 3, 5, 7]));
+    </script>
+  </body>
+</html> -->

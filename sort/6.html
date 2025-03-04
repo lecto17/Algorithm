@@ -7,6 +7,9 @@
       function solution(arr) {
         let tmp, small = Number.MAX_SAFE_INTEGER;
         let answer = [];
+        
+        // js의 sort는 기본적으로 문자열 sort
+        // 숫자 sort를 하기 위해선 콜백 지정할 것 -> [100, 200, 99].sort() X / [100, 200, 99].sort((a, b) => a - b)
 
         for (let i = 0; i < arr.length - 1; i++) {
           const temp = arr[i];

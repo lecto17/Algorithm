@@ -6,28 +6,23 @@
     <script>
       
       function solution(arr) {
-        let count = 1, endTime = -1, big = Number.MIN_SAFE_INTEGER;
-        let sortedArr = arr.sort((a, b) => {
+        let count = 0, big = Number.MIN_SAFE_INTEGER;
+        let sortedArr = arr.map(([ start, end ]) => [[start, 's'], [end, 'e']]).flat();
+        
+        sortedArr.sort((a, b) => {
           if (a[0] === b[0]) {
-            return a[1] - b[1]
+            return a[1].localeCompare(b[1]);
           } else {
             return a[0] - b[0];
           } 
         })
         
-        console.log("arr ", sortedArr);
-        
         for (let i = 0; i < sortedArr.length - 1; i++) {
-          endTime = sortedArr[i][1];
-          for (let j = i + 1; j < sortedArr.length - i -1; j++) {
-            if (sortedArr[j][0] < endTime  && endTime < sortedArr[j][1]) {
-              count++;
-              console.log(i, j, endTime, sortedArr[j], count);
-              
-            } else break;
-          }
+          const [, type] = sortedArr[i];
+          if (type === 's') count++;
+          else count--;
+
           big = Math.max(big, count);
-          count = 1;
         }
 
         return big;
@@ -35,17 +30,17 @@
 
       
 
-       console.log(
-        solution([
-        [10, 20],
-        [5 ,15],
-        [17, 25],
-        [30, 40],
-        [5 ,10],
-        [20, 30],
-        [15, 17],
-        ]
-      ));
+      //  console.log(
+      //   solution([
+      //   [10, 20],
+      //   [5 ,15],
+      //   [17, 25],
+      //   [30, 40],
+      //   [5 ,10],
+      //   [20, 30],
+      //   [15, 17],
+      //   ]
+      // ));
       
       //  console.log(
       //   solution([
@@ -55,15 +50,15 @@
       //   ]
       // ));
 
-      //  console.log(
-      //   solution([
-      //   [14, 18],
-      //   [12, 15],
-      //   [15, 20],
-      //   [20, 30],
-      //   [5, 14],
-      //   ]
-      // ));
+       console.log(
+        solution([
+        [14, 18],
+        [12, 15],
+        [13, 20],
+        [20, 30],
+        [5, 14],
+        ]
+      ));
      
     </script>
   </body>

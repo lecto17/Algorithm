@@ -1,0 +1,47 @@
+<!-- Insertion Sort 방식 -->
+<meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      
+      function solution(arr, target) {
+        // return arr.sort().indexOf(target) + 1
+
+        // 이분 검색으로 풀것
+        // 이분 검색할 배열은 오름차순이든, 내림차순이든 정렬이 되어 있어야한다.
+        // 이분 검색의 Big-O는 log(n)이고, 순차 탐색은 O(n)이다.
+        let lt = 0, rt = arr.length, mid = parseInt((lt + rt) / 2);
+        let answer = - 1;
+        /** 
+         * **그냥 sort는 문자열 정렬**
+         * 반드시 숫자 정렬할 때는 아래와 같이
+        */
+        let sortedArr = arr.sort((a, b) => a - b);
+        
+        while(lt <= rt) {
+          if (sortedArr[mid] === target) {
+            answer = mid + 1;
+            break;
+          } else if (sortedArr[mid] > target) {
+            rt = mid - 1;
+          } else {
+            lt = mid + 1;
+          }
+
+          mid = parseInt((lt + rt) / 2)
+        }
+
+        return answer;
+      }
+       
+      console.log(
+        solution([
+         23, 87, 65, 12, 57, 32, 99, 81, 100
+        ], 32
+      ));
+     
+    </script>
+  </body>
+</html>
+

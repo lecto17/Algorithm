@@ -9,7 +9,10 @@
       
       function solution(arr, countOfHorses) {
         const sortedArr = arr.sort((a, b) => a - b);
-        let lt = sortedArr[0];
+        // lt를 sortedArr의 첫번째 요소로 하면 안됨.
+        // 결정 알고리즘 특성 상 순차적(맨 처음 단계 곧, 바운더리 1, 밑바닥 부터)으로 검색해야함.
+        // let lt = sortedArr[0];
+        let lt = 1;
         let rt = sortedArr[sortedArr.length - 1];
         let mid ;
         let ep = lt, count = 1, big = Number.MIN_SAFE_INTEGER;

@@ -1,0 +1,48 @@
+<!-- 
+결정 알고리즘 - mid가 무엇인지에 따라, 최적의 답을 구해가는 과정 
+-->
+<meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      
+      function solution(arr, countOfHorses) {
+        const sortedArr = arr.sort((a, b) => a - b);
+        let lt = sortedArr[0];
+        let rt = sortedArr[sortedArr.length - 1];
+        let mid ;
+        let ep = lt, count = 1, big = Number.MIN_SAFE_INTEGER;
+
+        while (lt <= rt) {
+          mid = parseInt((lt + rt) / 2);
+          for (house of sortedArr) {
+            if (house - ep >= mid) {
+              count++;
+              ep = house;
+            }
+          }
+
+          if (count >= countOfHorses) {
+            lt = mid + 1;
+            big = Math.max(big, mid)
+          } else {
+            rt = mid - 1;
+          }
+          count = 1;
+          ep = sortedArr[0];
+        }
+
+        return big;
+      }
+       
+      console.log(
+        solution([
+         1,2,8,4,9
+        ], 3
+      ));
+     
+    </script>
+  </body>
+</html>
+

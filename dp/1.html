@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(number) {
+        let arr = Array.from({ length: number + 1 }).fill(0);
+
+        arr[1] = 1;
+        arr[2] = 2;
+
+        for (let i = 1; i < number - 1; i++) {
+          arr[i + 2] = arr[i] + arr[i + 1];
+        }
+
+        return arr[number];
+      }
+
+      console.log(solution(7));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(number) {
+        let arr = Array.from({ length: number + 2 }).fill(0);
+
+        arr[1] = 1;
+        arr[2] = 2;
+
+        for (let i = 1; i < number; i++) {
+          arr[i + 2] = arr[i] + arr[i + 1];
+        }
+
+        // number + 1 => number는 돌다리까지의 갯수, 한 단계 더 나아가야 강을 건너는 것.
+        return arr[number + 1];
+      }
+
+      console.log(solution(7));
+    </script>
+  </body>
+</html>

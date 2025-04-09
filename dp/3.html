@@ -13,8 +13,10 @@
         for (let i = 1; i < numbers.length; i++) {
           max = 0;
           for (let j = i - 1; j >= 0; j--) {
-            if (numbers[j] < numbers[i]) {
-              max = Math.max(arr[j], max);
+            if (numbers[j] < numbers[i] && arr[j] > max) {
+              // if 문에서 arr[j] > max 비교연산 작업이 Math.max() 작업보다 더 성능적으로 나을 것 같음.
+              // max = Math.max(arr[j], max);
+              max = arr[j];
             }
           }
           arr[i] = max + 1;
@@ -25,6 +27,7 @@
 
       console.log(solution([2, 7, 5, 8, 6, 4, 7, 12, 3]));
       console.log(solution([5, 3, 7, 8, 6, 2, 9, 4]));
+      console.log(solution([5, 4, 3, 2, 1]));
     </script>
   </body>
 </html>

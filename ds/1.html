@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const stack = [];
+        let flag = false;
+
+        arr.split("").forEach((ch) => {
+          if (ch === "(") stack.push("(");
+          else {
+            if (!stack.length) flag = true;
+            stack.pop();
+          }
+        });
+
+        return stack.length || flag ? "NO" : "YES";
+      }
+
+      console.log(solution("(())()"));
+      console.log(solution("(()()))"));
+      console.log(solution("(()(()))(()"));
+    </script>
+  </body>
+</html>

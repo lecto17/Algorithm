@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        const concateniation = [];
+        const answer = [];
+
+        for (ch of arr) {
+          if (ch === "(") {
+            concateniation.push("(");
+          } else if (ch === ")") {
+            concateniation.pop();
+            continue;
+          }
+
+          if (!concateniation.length) {
+            answer.push(ch);
+          }
+        }
+
+        return answer.join("");
+      }
+
+      console.log(solution("(A(BC)D)EF(G(H)(IJ)K)LM(N)"));
+    </script>
+  </body>
+</html>

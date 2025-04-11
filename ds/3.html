@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(boards, moves) {
+        const candidates = [];
+        let popCount = 0;
+        const stack = Array.from({ length: boards.length + 1 }).map(() => []);
+
+        for (let i = boards.length - 1; i >= 0; i--) {
+          for (let j = 0; j < boards[0].length; j++) {
+            if (!boards[i][j]) continue;
+            stack[j + 1].push(boards[i][j]);
+          }
+        }
+
+        console.log("st: ", stack);
+
+        for (const move of moves) {
+          const number = stack[move].pop();
+          if (candidates[candidates.length - 1] === number && number) {
+            console.log("why: ", number, candidates[candidates.length - 1]);
+
+            candidates.pop();
+            popCount++;
+            continue;
+          }
+
+          if (number) candidates.push(number);
+        }
+
+        return popCount * 2;
+      }
+
+      console.log(
+        solution(
+          [
+            [0, 0, 0, 0, 0],
+            [0, 0, 1, 0, 3],
+            [0, 2, 5, 0, 1],
+            [4, 2, 4, 4, 2],
+            [3, 5, 1, 3, 1],
+          ],
+          [1, 5, 3, 5, 1, 2, 1, 4]
+        )
+      );
+    </script>
+  </body>
+</html>

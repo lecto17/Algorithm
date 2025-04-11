@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(problems, time) {
+        const answer = Array.from({ length: time + 1 }).fill(0);
+
+        for (let i = 0; i < problems.length; i++) {
+          const [ps, pt] = problems[i];
+          for (let j = time; j >= pt; j--) {
+            answer[j] = Math.max(answer[j], answer[j - pt] + ps);
+          }
+        }
+        return answer[time];
+      }
+
+      console.log(
+        solution(
+          [
+            [10, 5],
+            [25, 12],
+            [15, 8],
+            [6, 3],
+            [7, 4],
+          ],
+          20
+        )
+      );
+    </script>
+  </body>
+</html>

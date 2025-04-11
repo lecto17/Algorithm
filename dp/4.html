@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(coins, money) {
+        let flag = false;
+        let leftMoney = money;
+        const arr = Array.from({ length: coins.length }).fill(0);
+
+        coins.sort((a, b) => b - a);
+
+        for (let i = 0; i < coins.length; i++) {
+          arr[i] = Math.floor(leftMoney / coins[i]);
+          leftMoney -= arr[i] * coins[i];
+
+          if (leftMoney === 0) return arr[i];
+          for (let j = i + 1; j < coins.length; j++) {
+            arr[j] = Math.floor(leftMoney / coins[j]);
+            leftMoney -= arr[j] * coins[j];
+
+            if (leftMoney === 0) {
+              flag = true;
+              break;
+            }
+          }
+          if (flag) return arr.reduce((acc, cur) => (acc += cur), 0);
+        }
+      }
+
+      console.log(solution([1, 2, 5], 20));
+    </script>
+  </body>
+</html>

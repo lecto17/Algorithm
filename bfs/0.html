@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(man, cow) {
+        if (man === cow) return 0;
+
+        const pos = [1, -1, 5];
+        let queue = [],
+          temp = [];
+        let manPosition,
+          count = 1,
+          flag = false;
+        pos.forEach((n) => queue.push(man + n));
+        temp = [...queue];
+
+        while (queue.length) {
+          for (let i = 0; i < queue.length; i++) {
+            manPosition = temp.shift();
+            if (manPosition === cow) {
+              flag = true;
+              break;
+            }
+
+            for (let i = 0; i < pos.length; i++) {
+              temp.push(pos[i] + manPosition);
+            }
+          }
+
+          if (flag) return count;
+          queue = [...temp];
+          count++;
+        }
+      }
+
+      console.log(solution(5, 14));
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>

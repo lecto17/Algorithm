@@ -1,10 +1,18 @@
 function solution(players, callings) {
-  var answer = [...players];
+  const answer = [...players];
+  const rankMap = new Map();
+  let index;
+
+  players.forEach((el, idx) => rankMap.set(el, idx));
+
   for (const calling of callings) {
-    const index = answer.findIndex((el) => el === calling);
-    const temp = answer[index];
+    index = rankMap.get(calling);
+
     answer[index] = answer[index - 1];
-    answer[index - 1] = temp;
+    answer[index - 1] = calling;
+
+    rankMap.set(calling, index - 1);
+    rankMap.set(answer[index], index);
   }
   return answer;
 }

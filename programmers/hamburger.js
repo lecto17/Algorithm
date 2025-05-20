@@ -1,39 +1,19 @@
 function solution(ingredient) {
-  var answer = 0,
-    endFlag = false;
-  let needStuff = 1,
-    needLastBun = false;
-
-  while (true) {
+    var answer = 0;
+    let stack = [];
+    
     for (let i = 0; i < ingredient.length; i++) {
-      const stuff = ingredient[i];
-
-      if (stuff === needStuff && !needLastBun) {
-        needStuff += 1;
-      } else if (stuff === 1 && !needLastBun) {
-        needStuff = 2;
-      } else if (stuff !== needStuff) {
-        needStuff = 1;
-        needLastBun = false;
-      } // 햄버거 못만듬 초기화.
-
-      // 햄버거 마지막 번
-      if (needStuff === 4) {
-        needStuff = 1;
-        needLastBun = true;
-      } else if (stuff === 1 && needStuff === 1 && needLastBun) {
-        // 햄버거 다 만듬 초기화
-        ingredient.splice(i - 3, 4);
-        answer++;
-        needLastBun = false;
-        break;
-      }
-
-      if (i === ingredient.length - 1) endFlag = true;
+        stack.push(ingredient[i]);
+        
+        if (stack.length >= 4) {
+            const last = stack.slice(-4).join("");
+            
+            if (last === "1231") {
+                answer++;
+                stack.splice(-4, 4);
+            }
+        }
     }
-
-    if (endFlag || !ingredient.length) break;
-  }
-
-  return answer;
+    
+    return answer;
 }
